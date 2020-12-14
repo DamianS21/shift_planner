@@ -1,13 +1,13 @@
 from pprint import pprint
 global request_day
-request_day= {  # Zadanie wolnego od D
+request_day= {  # Requests of free from day shift
     1: [4,5,6],
     2: [],
     3: [4,5,11,12],
     4: [4,5,6,7,8,9,10,11]
 }
 global request_night
-request_night= {  # Zadanie wolnego od N
+request_night= {  # Requests of free from night shift
     1: [4,5],
     2: [],
     3: [3,11,12],
@@ -15,8 +15,8 @@ request_night= {  # Zadanie wolnego od N
 }
 global time_of_break_day
 global time_of_break_night
-time_of_break_day = [] # zmeczenie liczone od 7:00, dnia 1 - index 1
-time_of_break_night = [] # zmeczenie liczone od 19:00, dnia 1 - index 1
+time_of_break_day = []  # 'regeneration time counted till 07:00 day 1 (index 1)
+time_of_break_night = []  # 'regeneration time counted till 19:00 day 1 (index 1)
 global calendar
 calendar = []
 for j in range(0,31):
@@ -27,8 +27,8 @@ calendar = dict(enumerate(calendar, 0))
 time_of_break_day = dict(enumerate(time_of_break_day, 0))
 time_of_break_night = dict(enumerate(time_of_break_night, 0))
 calendar.update({0: [3,1]})
-time_of_break_day.update({0: [12,3*24,0,24]})
-time_of_break_night.update({0: [0,3*24+12,12,24+12]})
+time_of_break_day.update({0: [12,3*24,0,24]})  # Adding actual values of 'regeneration time' till day shift of day zero
+time_of_break_night.update({0: [0,3*24+12,12,24+12]})  # Adding actual values of 'regeneration time' till night shift of day zero
 
 
 def shifter(day_of_month, request_day, request_night, calendar, time_of_break_day, time_of_break_night):
